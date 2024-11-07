@@ -1,20 +1,32 @@
 package br.com.tarefas.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tarefas_categoria")
-public class TarefaCategoria {
+@Table(name = "roles")
+public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	private String nome;
+	@Enumerated(EnumType.STRING)
+	@Column(length = 20)
+	private ERole name;
+
+	public Role() {
+	}
+
+	public Role(ERole name) {
+		this.name = name;
+	}
 
 	public Integer getId() {
 		return id;
@@ -24,14 +36,12 @@ public class TarefaCategoria {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public ERole getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(ERole name) {
+		this.name = name;
 	}
-	
-	
-	
+
 }
